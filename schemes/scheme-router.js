@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
   });
 });
 
+
 router.get('/:id', (req, res) => {
   const { id } = req.params;
 
@@ -29,6 +30,7 @@ router.get('/:id', (req, res) => {
     res.status(500).json({ message: 'Failed to get schemes' });
   });
 });
+
 
 router.get('/:id/steps', (req, res) => {
   const { id } = req.params;
@@ -58,6 +60,7 @@ router.post('/', (req, res) => {
   });
 });
 
+// (Stretch) Add a step to for a specified scheme
 router.post('/:id/steps', (req, res) => {
   const stepData = req.body;
   const { id } = req.params; 
@@ -104,7 +107,7 @@ router.delete('/:id', (req, res) => {
   Schemes.remove(id)
   .then(deleted => {
     if (deleted) {
-      res.json({ removed: deleted });
+      res.json({ message: 'Deleted 1 Scheme' });
     } else {
       res.status(404).json({ message: 'Could not find scheme with given id' });
     }
